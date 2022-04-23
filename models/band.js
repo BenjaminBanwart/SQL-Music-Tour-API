@@ -1,11 +1,18 @@
-// DEPENDENCIES
-const { Sequelize, DataTypes, Models } = require('sequelize')
-
-const sequelize = Sequelize(process.env.PG_URI, { username: "postgres", password: "1303function(){};"})
-
-// Model
-class Band extends Model {};
-
+'use strict'
+const {
+    Model
+} = require('sequelize');
+module.exports = (sequelize, DataTypes) => {
+class Band extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      // define association here
+    }
+}
 Band.init({
     band_id: {
         type: DataTypes.INTEGER,
@@ -34,6 +41,5 @@ Band.init({
     tableName: 'band',
     timestamps: false
 })
-
-//Exports
-module.exports = Band;
+    return Band
+}
